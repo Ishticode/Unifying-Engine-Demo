@@ -1,6 +1,5 @@
 import chainer as ch
 import numpy as np
-from .Array import ChainArray
 
 
 def tensor(x):

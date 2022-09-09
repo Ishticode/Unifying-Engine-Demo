@@ -32,6 +32,3 @@ def test_sum(framework, x_input, axis):
     # test results against numpy
     np_result = np.sum(x_input, axis)
     assert np.allclose(y, np_result)
-
-
-

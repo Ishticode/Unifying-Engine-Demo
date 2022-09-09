@@ -28,3 +28,7 @@ def sqrt(x):
 
 def zeros_like(x):
     return torch.zeros_like(x)
+
+
+def abs(x):
+    return torch.abs(x)

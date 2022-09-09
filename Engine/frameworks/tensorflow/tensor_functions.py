@@ -24,3 +24,5 @@ def sqrt(x):
 def zeros_like(x):
     return tf.zeros_like(x)
 
+def abs(x):
+    return tf.abs(x)

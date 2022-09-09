@@ -1,6 +1,7 @@
 import Engine
 import abc
 import torch
+from itertools import chain
 Engine.choose_framework("torch")
 
 
@@ -8,9 +9,17 @@ Engine.choose_framework("torch")
 class Module(abc.ABC):
     def __init__(self):
         pass
-
-    def params(self):
-        return [p.w for p in self.__dict__.values()] + [p.b for p in self.__dict__.values()]
+    # def get_params(self):
+    #     self.params = [p.w for p in self.__dict__.values()] + [p.b for p in self.__dict__.values()]
+    #     return self.params
+    #
+    # def set_params(self, params):
+    #     self.params = params
+    #     return self.params
+    # def parameters(self):
+    #     p = {"w": [d.w for d in self.__dict__.values()]}
+    #     p["b"] = [d.b for d in self.__dict__.values()]
+    #     return p
 
     def forward(self, x):
         pass
@@ -32,6 +41,9 @@ class Linear(Module):
 
     def forward(self, x):
         return Engine.linear(x, self.w, self.b)
+
+    def parameters(self):
+        return [self.w, self.b]
 
     def __call__(self, x):
         return self.forward(x)

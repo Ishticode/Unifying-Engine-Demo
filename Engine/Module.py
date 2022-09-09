@@ -60,14 +60,14 @@ class Conv2D(Module):
         self._strides = strides
         self._padding = padding
         self._data_format = data_format
-        self._w_shape = filter_shape + [input_channels, output_channels] if data_format == 'NHWC' \
-            else [input_channels, output_channels] + filter_shape
+        self._w_shape = list(filter_shape) + [input_channels, output_channels] if data_format == 'NHWC' \
+            else [input_channels, output_channels] + list(filter_shape)
         self._b_shape = (1, 1, 1, output_channels)
         self.w = Engine.randn(self._w_shape)
         self.b = Engine.randn(self._b_shape)
 
     def parameters(self):
-        return {"w":self.w, "b":self.b}
+        return [self.w, self.b]
 
     def forward(self, inputs):
         return Engine.conv2d(inputs, self.w, self._strides, self._padding, self._data_format) + self.b

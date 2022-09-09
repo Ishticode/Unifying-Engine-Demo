@@ -11,7 +11,7 @@ def eval_and_grad(net, x, target, loss_fn):
         loss = loss_fn(y, target)
         grads = tape.gradient(loss, [p for p in net.parameters()])
 
-    return loss, grads
+    return loss.numpy(), grads
 
 
 def gradient_step(net, grads):

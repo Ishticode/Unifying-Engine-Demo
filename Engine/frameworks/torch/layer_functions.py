@@ -22,3 +22,20 @@ def conv2d(x, filters, strides: int, padding: str, data_format: str = 'NHWC'):
     if data_format == 'NHWC':
         return res.permute(0, 2, 3, 1)
     return res
+
+
+def relu(x):
+    return torch.nn.functional.relu(x)
+
+
+def max_pool(x, ksize, strides):
+    x = x.permute(0, 2, 3, 1)
+    res = torch.nn.functional.max_pool2d(x, ksize, strides)
+    return res.permute(0, 3, 1, 2)
+
+
+def cross_entropy_loss(x, y):
+    return (torch.nn.functional.cross_entropy(x, y))
+
+def mse_loss(x, y):
+    return torch.nn.functional.mse_loss(x, y)

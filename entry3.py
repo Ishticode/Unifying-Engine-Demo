@@ -1,6 +1,6 @@
 import Engine
 from itertools import chain
-Engine.choose_framework("torch")
+Engine.choose_framework("tensorflow")
 import torch
 import tensorflow as tf
 
@@ -69,10 +69,11 @@ net = network()
 losses = []
 epochs = []
 # new_params = []
-for epoch in range(10):
+for epoch in range(50):
     loss, grad = Engine.eval_and_grad(net, x_in, target, loss_fn)
     Engine.gradient_step(net, grad)
     losses.append(loss)
     epochs.append(epoch)
+    #grad = None
 
 print(losses)

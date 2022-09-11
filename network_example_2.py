@@ -1,18 +1,14 @@
 import Engine
-from itertools import chain
 Engine.choose_framework("torch")
-import torch
-import tensorflow as tf
 
-loss_fn = Engine.mse_loss
 
-class network(Engine.Module):
+class CNNNet(Engine.Module):
     def __init__(self):
         self.conv1 = Engine.Conv2D(1, 4, (3, 3), (1, 1), 'SAME')
         self.conv2 = Engine.Conv2D(4, 8, (3, 3), (1, 1), 'SAME')
         self.pool = Engine.MaxPool2D((2, 2), (2, 2))
         self.layers = [self.conv1, self.conv2]
-        super(network, self).__init__()
+        super(CNNNet, self).__init__()
 
     def parameters(self):
         return [p for l in self.layers for p in l.parameters()]
@@ -27,7 +23,8 @@ class network(Engine.Module):
 
 x_in = Engine.variable(Engine.randn((2,2,2,1)))
 target = Engine.randn((2,2,2,1))
-net = network()
+net = CNNNet()
+loss_fn = Engine.mse_loss
 
 losses = []
 epochs = []

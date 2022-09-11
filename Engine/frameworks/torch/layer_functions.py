@@ -12,9 +12,9 @@ def conv2d(x, filters, strides: int, padding: str, data_format: str = 'NHWC', di
     if data_format == 'NHWC':
         x = x.permute(0, 3, 1, 2)
     if padding == 'VALID':
-        padding_list: List[int] = [0, 0]
+        padding_list = [0, 0]
     elif padding == 'SAME':
-        padding_list: List[int] = [int(math.floor(item / 2)) for item in filter_shape]
+        padding_list = [int(math.floor(item / 2)) for item in filter_shape]
     else:
         raise Exception('Invalid padding arg {}\n'
                         'Must be one of: "VALID" or "SAME"'.format(padding))
@@ -29,9 +29,9 @@ def relu(x):
 
 
 def max_pool(x, ksize, strides):
-    x = x.permute(0, 2, 3, 1)
-    res = torch.nn.functional.max_pool2d(x, ksize, strides)
-    return res.permute(0, 3, 1, 2)
+    x = x.permute(0, 3, 1, 2)
+    res = torch.nn.functional.max_pool2d(x, ksize, strides, [0, 0])
+    return res.permute(0, 2, 3, 1)
 
 
 def mse_loss(x, y):

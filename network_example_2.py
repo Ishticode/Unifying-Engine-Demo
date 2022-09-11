@@ -21,8 +21,8 @@ class CNNNet(Engine.Module):
         return x
 
 
-x_in = Engine.variable(Engine.randn((2,2,2,1)))
-target = Engine.randn((2,2,2,1))
+x_in = Engine.variable(Engine.randn((2, 2, 2, 1)))
+target = Engine.randn((2, 2, 2, 1))
 net = CNNNet()
 loss_fn = Engine.mse_loss
 

@@ -22,10 +22,6 @@ def variable(x):
     return torch.tensor(x, requires_grad=True)
 
 
-def sqrt(x):
-    return torch.sqrt(x)
-
-
 def zeros_like(x):
     return torch.zeros_like(x)
 

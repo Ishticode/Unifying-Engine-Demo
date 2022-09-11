@@ -58,7 +58,7 @@ class Conv2D(Module):
         return [self.w, self.b]
 
     def forward(self, inputs):
-        return Engine.conv2d(inputs, self.w, self._strides, self._padding, self._data_format) + self.b
+        return Engine.conv2d(inputs, self.w, self._strides, self._padding) + self.b
 
 
 class MaxPool2D(Module):

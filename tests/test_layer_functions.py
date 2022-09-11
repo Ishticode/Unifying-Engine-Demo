@@ -80,3 +80,55 @@ def test_conv2d(x_n_filters_n_pad_n_res, framework):
     # value test
     assert np.allclose(ret, true_res)
 
+
+# max_pool
+@pytest.mark.parametrize(
+    "x", [[[[[7., 4],
+          [9, 1]],
+
+         [[3, 6],
+          [9, 7]],
+
+         [[0, 3],
+          [5, 5]]],
+
+
+        [[[9, 5],
+          [8, 1]],
+
+         [[8, 4],
+          [4, 5]],
+
+         [[6, 8],
+          [1, 3]]]]])
+@pytest.mark.parametrize("true_res", [[[[[9., 7.]]], [[[9., 5.]]]]])
+@pytest.mark.parametrize("framework", ["torch", "tensorflow"])
+def test_max_pool(x,true_res, framework):
+    Engine.choose_framework(framework)
+    x, true_res = Engine.tensor(x), Engine.tensor(true_res)
+    ret = Engine.max_pool(x, 2, 2)
+    # type test
+    assert str(type(ret)) == Engine.array_framework_classes[framework]
+    # cardinality test
+    assert ret.shape == true_res.shape
+    # value test
+    assert np.allclose(ret, true_res)
+
+
+
+
+# relu
+@pytest.mark.parametrize("framework", ["torch", "tensorflow"])
+@pytest.mark.parametrize("x", [[0., 2., -1., 3., -2.], [[0., 2., -1., 3., -2.]]])
+@pytest.mark.parametrize("true_res", [[0., 2., 0., 3., 0.], [[0., 2., 0., 3., 0.]]])
+def test_relu(framework, x, true_res):
+    Engine.choose_framework(framework)
+    x, true_res = Engine.tensor(x), Engine.tensor(true_res)
+    ret = Engine.relu(x)
+    # type test
+    assert str(type(ret)) == Engine.array_framework_classes[framework]
+    # value test
+    assert np.allclose(ret, true_res)
+
+
+

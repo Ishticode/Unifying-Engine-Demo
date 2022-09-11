@@ -17,16 +17,13 @@ def variable(x):
     return tf.Variable(x)
 
 
-def sqrt(x):
-    return tf.sqrt(x)
-
-
 def zeros_like(x):
     return tf.zeros_like(x)
+
 
 def abs(x):
     return tf.abs(x)
 
+
 def reshape(x, shape):
     return tf.reshape(x, shape)
-

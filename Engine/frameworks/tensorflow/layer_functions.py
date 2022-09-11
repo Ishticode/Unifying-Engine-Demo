@@ -20,4 +20,4 @@ def max_pool(x, ksize, strides):
 
 
 def mse_loss(x, y):
-    return tf.reduce_sum(tf.losses.mean_squared_error(x, y))
+    return tf.reduce_mean(tf.square(x - y))

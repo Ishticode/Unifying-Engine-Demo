@@ -2,6 +2,7 @@ import pytest
 import Engine
 import numpy as np
 
+
 @pytest.mark.parametrize("framework", ["torch", "tensorflow"])
 @pytest.mark.parametrize(
     "x_params_res", [
@@ -20,7 +21,6 @@ def test_linear(framework, x_params_res):
     x, w, b, res = Engine.tensor(x), Engine.tensor(weight), Engine.tensor(bias), Engine.tensor(true_res)
     y = Engine.linear(x, w, b)
     assert np.allclose(y, res)
-
 
 
 # conv2d
@@ -113,8 +113,6 @@ def test_max_pool(x,true_res, framework):
     assert ret.shape == true_res.shape
     # value test
     assert np.allclose(ret, true_res)
-
-
 
 
 # relu

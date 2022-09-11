@@ -28,7 +28,3 @@ def zeros_like(x):
 
 def abs(x):
     return torch.abs(x)
-
-
-def reshape(x, shape):
-    return torch.reshape(x, shape)

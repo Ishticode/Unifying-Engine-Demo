@@ -2,7 +2,7 @@ import Engine
 import abc
 import torch
 from itertools import chain
-Engine.choose_framework("torch")
+
 
 
 class Module(abc.ABC):
@@ -15,14 +15,26 @@ class Module(abc.ABC):
 
 
 class Linear(Module):
-    def __init__(self, in_features, out_features, bias=True):
+    def __init__(self, in_features, out_features, bias=True, w=None, b=None):
 
         self.in_features = in_features
         self.out_features = out_features
-        self.w = Engine.randn((out_features, in_features))
+
+        if w is None:
+            self.w = Engine.randn((out_features, in_features))
+        else:
+            self.w = w
+
+        if b is None:
+            if bias:
+                self.b = Engine.randn((out_features,))
+            else:
+                self.b = None
+        else:
+            self.b = b
+
         self.w = Engine.variable(self.w)
-        self.b = Engine.randn((out_features,)) if bias else None
-        self.b = Engine.variable(self.b) if bias else None
+        self.b = Engine.variable(self.b)
         super(Linear, self).__init__()
 
     def forward(self, x):

@@ -81,29 +81,3 @@ class MaxPool2D(Module):
 
     def forward(self, inputs):
         return Engine.max_pool(inputs, self._ksize, self._strides)
-
-#
-#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# lin = Linear(in_features=2, out_features=3)
-# x = Engine.tensor([[1., 2], [3, 4]])
-# tlin = torch.nn.functional.linear(x, lin.weight, lin.b)
-# y = lin(x)

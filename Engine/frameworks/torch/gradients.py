@@ -4,7 +4,7 @@ def eval_and_grad(net, x, target, loss_fn):
     y = net(x)
     loss = loss_fn(y, target)
 
-    #loss.retain_grad()
+    loss.retain_grad()
     loss.backward()
     return loss.item(), [p.grad for p in net.parameters()]
 

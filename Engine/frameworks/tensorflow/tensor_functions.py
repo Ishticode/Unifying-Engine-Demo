@@ -23,3 +23,7 @@ def zeros_like(x):
 
 def abs(x):
     return tf.abs(x)
+
+
+def reshape(x, shape):
+    return tf.reshape(x, shape)

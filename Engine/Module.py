@@ -43,9 +43,6 @@ class Linear(Module):
     def parameters(self):
         return [self.w, self.b]
 
-    def __call__(self, x):
-        return self.forward(x)
-
 
 class Conv2D(Module):
 

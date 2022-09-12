@@ -1,8 +1,6 @@
 # Unifying_Engine-Demo
-This is a very small demo of how a machine learning unifying engine would work 
-on the very minimum level involving just some functions. This is isnspired by the repository unifyai/ivy.
+This is a demo of how a machine learning unifying engine would work 
+on the minimal level with some examples. Much like micrograd by Andrej Karpathy is inspired by Pytorch's Autograd, this is inspired by the repository unifyai/ivy created by Daniel Lenton.
 
-As more functionality is added, this will demand more work and as full neural network is supported 
-it will require stateful classes and gradient support. This does not adress with the complexities arising from dtype differences,
-argument differences and device handling amongst other nuiances. 
- 
+The idea is to allow framework-agnostic code written once that can be run just by selecting a backend framework to run code with. One may check the examples for more clarification. 
+

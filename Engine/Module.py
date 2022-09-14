@@ -17,8 +17,6 @@ class Module(abc.ABC):
 class Linear(Module):
     def __init__(self, in_features, out_features, bias=True, w=None, b=None):
 
-        self.in_features = in_features
-        self.out_features = out_features
 
         if w is None:
             self.w = Engine.randn((out_features, in_features))

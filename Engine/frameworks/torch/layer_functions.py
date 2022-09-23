@@ -5,7 +5,7 @@ import math
 def linear(x, weight, bias=None):
     return torch.nn.functional.linear(x, weight, bias)
 
-
+# adapted from unifyai/ivy
 def conv2d(x, filters, strides: int, padding: str, data_format: str = 'NHWC', dilations: int = 1):
     filter_shape = list(filters.shape[0:2])
     filters = filters.permute(3, 2, 0, 1)

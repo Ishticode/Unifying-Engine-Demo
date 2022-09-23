@@ -42,6 +42,7 @@ class Linear(Module):
         return [self.w, self.b]
 
 
+# Partially adapted from univyai/ivy
 class Conv2D(Module):
 
     def __init__(self, input_channels, output_channels, filter_shape, strides, padding,
